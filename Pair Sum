@@ -1,0 +1,26 @@
+//Section 1 
+//Pair Sum
+#include<bits/stdc++.h>
+using namespace std;
+pair<int,int> pair_sum(vector<int>&v,int target){
+    unordered_map<int,int>s;
+    for(int i=0;i<v.size();i++){
+        int curr=target-v[i];
+        if(s.find(curr)!=s.end()){
+            return {s[curr],i};
+            break;
+        }
+        s[v[i]]=i;
+    }
+    return {-1,-1};
+}
+int main(){
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0;i<n;i++)cin>>v[i];
+    int k;
+    cin>>k;
+    pair<int,int>p=pair_sum(v,k);
+    cout<<p.first<<" "<<p.second<<endl;
+    }
